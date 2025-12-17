@@ -13,8 +13,13 @@ import {
 import { useInvitation } from "@/context/InvitationContext";
 import { generateInvitationPDF } from "@/lib/pdfGenerator";
 import { useState } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, CalendarIcon } from "lucide-react"; // Ajout de CalendarIcon
 import { toast } from "sonner";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"; // Ajout de Popover
+import { Calendar } from "@/components/ui/calendar"; // Ajout de Calendar
+import { format } from "date-fns"; // Pour formater la date
+import { fr } from "date-fns/locale"; // Pour la localisation française
+import { cn } from "@/lib/utils"; // Pour combiner les classes CSS
 
 export function InvitationForm() {
   const { data, setData } = useInvitation();
@@ -25,6 +30,13 @@ export function InvitationForm() {
     setData((prevData) => ({
       ...prevData,
       [id]: value,
+    }));
+  };
+
+  const handleDateChange = (date: Date | undefined) => {
+    setData((prevData) => ({
+      ...prevData,
+      ceremonyDate: date ? format(date, "EEEE d MMMM yyyy", { locale: fr }) : "", // Formatage de la date
     }));
   };
 
@@ -69,7 +81,29 @@ export function InvitationForm() {
               <AccordionContent className="space-y-6 pt-4">
                 <div className="space-y-2">
                   <Label htmlFor="ceremonyDate">Date de la cérémonie</Label>
-                  <Input id="ceremonyDate" value={data.ceremonyDate} onChange={handleChange} />
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-full justify-start text-left font-normal",
+                          !data.ceremonyDate && "text-muted-foreground"
+                        )}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {data.ceremonyDate ? data.ceremonyDate : "Sélectionnez une date"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0">
+                      <Calendar
+                        mode="single"
+                        selected={data.ceremonyDate ? new Date(data.ceremonyDate) : undefined}
+                        onSelect={handleDateChange}
+                        initialFocus
+                        locale={fr} // Utilisation de la localisation française
+                      />
+                    </PopoverContent>
+                  </Popover>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="ceremonyLocation">Lieu</Label>

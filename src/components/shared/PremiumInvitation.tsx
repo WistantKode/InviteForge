@@ -23,6 +23,9 @@ export function PremiumInvitation() {
       <div className="text-center space-y-2 mb-auto">
         <p className="font-sans text-base">{data.ceremonyDate}</p>
         <p className="font-sans text-base font-bold">{data.ceremonyLocation}</p>
+        {/* Ajout des noms du filleul et du parrain */}
+        <p className="font-serif text-xl mt-4">Filleul(e) : {data.godchildName || "Nom du Filleul"}</p>
+        <p className="font-serif text-xl">Parrain/Marraine : {data.godparentName || "Nom du Parrain"}</p>
       </div>
       <div className="flex items-center justify-center space-x-4">
         <TicketBarcode value={ticketNumber} />
