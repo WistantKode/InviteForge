@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         'ticket-black': '#1A1A1A', // Noir profond mat
         'ticket-ivory': '#FDFBF5', // Ivoire / crème clair
+        'light-gray': '#E0E0E0', // Nouveau gris clair pour le texte discret
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -55,10 +56,11 @@ const config: Config = {
         serif: ['var(--font-playfair)'],
       },
       aspectRatio: {
-        'panoramic': '3 / 1',
+        'panoramic': '3.2 / 1', // Ratio ajusté
       },
       backgroundImage: {
-        'ticket-texture': "url('/texture-dark.png')",
+        'university-bg': "url('/iut.jpg')", // Nouvelle image de fond
+        'paper-texture': "url('/texture1.jpg')", // Nouvelle texture papier
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
