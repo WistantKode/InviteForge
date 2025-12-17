@@ -12,42 +12,54 @@ export function PremiumInvitation() {
   // RECTO FACE CONTENT
   // =================================================================
   const rectoMainContent = (
-    <div className="flex flex-col h-full text-white p-4">
-      <div className="text-center mb-6">
-        <h1 className="font-serif text-3xl tracking-wider">CÉRÉMONIE DE PARRAINAGE</h1>
-        <p className="font-sans text-sm italic opacity-80 mt-1">Institut Universitaire de Technologie</p>
+    <div className="flex flex-col h-full text-white p-10"> {/* Marges généreuses */}
+      {/* En-tête */}
+      <div className="text-center mb-auto"> {/* mb-auto pour pousser le reste vers le bas */}
+        <h1 className="font-serif text-4xl font-bold tracking-wider leading-tight">
+          CÉRÉMONIE DE PARRAINAGE
+        </h1>
+        <p className="font-serif text-lg italic opacity-90 mt-2">
+          Institut Universitaire de Technologie de Douala
+        </p>
       </div>
-      <p className="font-sans text-xs text-center opacity-90 max-w-md mx-auto mb-8">
-        En l'honneur de la nouvelle promotion, nous avons le plaisir de vous convier à la cérémonie solennelle de parrainage.
+
+      {/* Texte formel */}
+      <p className="font-sans text-sm text-center text-light-gray max-w-md mx-auto mt-8 mb-10 leading-relaxed">
+        En l'honneur de la nouvelle promotion, nous avons le plaisir de vous convier à la cérémonie solennelle de parrainage, un moment de transmission et d'excellence académique.
       </p>
-      <div className="text-center space-y-2 mb-auto">
-        <p className="font-sans text-base">{data.ceremonyDate}</p>
-        <p className="font-sans text-base font-bold">{data.ceremonyLocation}</p>
-        {/* Ajout des noms du filleul et du parrain */}
-        <p className="font-serif text-xl mt-4">Filleul(e) : {data.godchildName || "Nom du Filleul"}</p>
-        <p className="font-serif text-xl">Parrain/Marraine : {data.godparentName || "Nom du Parrain"}</p>
+
+      {/* Bloc d'informations */}
+      <div className="text-center space-y-2 mb-auto"> {/* mb-auto pour pousser le code-barres vers le bas */}
+        <p className="font-sans text-base text-light-gray">{data.ceremonyDate}</p>
+        <p className="font-sans text-base font-bold text-light-gray">{data.ceremonyLocation}</p>
       </div>
-      <div className="flex items-center justify-center space-x-4">
+
+      {/* Code-barres */}
+      <div className="flex flex-col items-center justify-center mt-auto"> {/* mt-auto pour le pousser en bas */}
         <TicketBarcode value={ticketNumber} />
-        <p className="font-mono text-xs tracking-widest">{ticketNumber}</p>
+        <p className="font-mono text-xs tracking-widest text-light-gray mt-1">{ticketNumber}</p>
       </div>
     </div>
   );
 
+  // --- Contenu de la talonnette (25%) ---
   const rectoStubContent = (
-    <div className="h-full w-full flex flex-col items-center justify-between text-ticket-black">
-      <p className="font-serif text-xl tracking-widest uppercase [writing-mode:vertical-rl] rotate-180">
+    <div className="h-full w-full flex flex-col items-center justify-between text-ticket-black p-6"> {/* Marges généreuses */}
+      <p
+        className="font-serif text-xl font-bold tracking-widest uppercase text-ticket-black"
+        style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+      >
         Invitation Officielle
       </p>
       <div className="flex flex-col items-center space-y-2">
         <TicketBarcode value={ticketNumber} isVertical />
-        <p className="font-mono text-xs -rotate-90 origin-center whitespace-nowrap">{ticketNumber}</p>
+        <p className="font-mono text-xs text-light-gray -rotate-90 origin-center whitespace-nowrap">{ticketNumber}</p>
       </div>
     </div>
   );
 
   // =================================================================
-  // VERSO FACE CONTENT
+  // VERSO FACE CONTENT (unchanged for this phase)
   // =================================================================
   const versoMainContent = (
     <div className="flex flex-col h-full text-white p-6 text-left">
