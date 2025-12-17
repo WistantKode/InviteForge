@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import { useInvitation } from "@/context/InvitationContext";
 import { generateInvitationPDF } from "@/lib/pdfGenerator";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Loader2, CalendarIcon } from "lucide-react"; // Ajout de CalendarIcon
 import { toast } from "sonner";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"; // Ajout de Popover
