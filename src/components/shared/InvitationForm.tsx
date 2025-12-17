@@ -1,17 +1,15 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { InvitationData } from "@/app/page";
+import { useInvitation } from "@/context/InvitationContext"; // 1. Importer le hook
 import { generateInvitationPDF } from "@/lib/pdfGenerator";
-import React from "react"; // Importation
 
-interface InvitationFormProps {
-  data: InvitationData;
-  setData: React.Dispatch<React.SetStateAction<InvitationData>>;
-}
+export function InvitationForm() {
+  const { data, setData } = useInvitation(); // 2. Utiliser le hook pour obtenir data et setData
 
-export function InvitationForm({ data, setData }: InvitationFormProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setData((prevData) => ({
@@ -21,8 +19,8 @@ export function InvitationForm({ data, setData }: InvitationFormProps) {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Empêche le rechargement de la page
-    generateInvitationPDF(data); // Appelle la fonction de génération
+    e.preventDefault();
+    generateInvitationPDF(data);
   };
 
   return (

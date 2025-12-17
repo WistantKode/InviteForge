@@ -1,15 +1,14 @@
+"use client";
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { InvitationData } from "@/app/page"; // Importation du type
+import { useInvitation } from "@/context/InvitationContext"; // 1. Importer le hook
 
-interface InvitationPreviewProps {
-  data: InvitationData;
-}
+export function InvitationPreview() {
+  const { data } = useInvitation(); // 2. Utiliser le hook pour obtenir data
 
-export function InvitationPreview({ data }: InvitationPreviewProps) {
   return (
     <Card className="w-full max-w-md bg-white dark:bg-gray-800 shadow-lg">
       <CardHeader className="flex items-center justify-center p-6">
-        {/* Emplacement pour le logo */}
         <div className="h-16 w-16 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
           <span className="text-xs text-gray-500">Logo</span>
         </div>
