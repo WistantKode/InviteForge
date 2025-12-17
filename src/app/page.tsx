@@ -1,5 +1,5 @@
 import { InvitationForm } from "@/components/shared/InvitationForm";
-import { InvitationPreview } from "@/components/shared/InvitationPreview";
+import { AnimatedInvitationPreview } from "@/components/shared/AnimatedInvitationPreview";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
           <InvitationForm />
         </div>
         <div className="flex items-center justify-center">
-          <InvitationPreview />
+          <AnimatedInvitationPreview />
         </div>
       </div>
     </main>
